@@ -1,0 +1,26 @@
+<!-- <div role="dialog" id="PopupModal">
+	<div class="modal-dialog text-center">
+		<div class="modal-header h1">{{popupTitle}}</div>
+		<div ng-bind-html="popupMsg | unsafe" class="modal-body"></div>
+			<br/>
+		<div class="modal-footer">
+			<button class="btn btn-danger" ng-click="ok()" autofocus=true>OK</button>
+			<button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+		</div>
+	</div>
+</div> -->
+<div ng-controller="PreRegistrationController as prCtrl" id="transCont" class="col-md-12" style="background-color: #fff; margin-bottom: 10px; box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);">
+	<div class="col-md-12 text-center">
+		<h1 style="border-bottom: 2px solid #ddd">{{popupTitle}}</h1>
+		<br>
+		<div ng-bind-html="popupMsg | unsafe" style="font-size: 1.2em">
+			
+		</div>
+		<br>
+		<div class="pull-right" style="margin-bottom: 10px;">
+			<button ng-hide="!cancel_disabled" class="btn btn-success col-md-12 col-sm-12 col-lg-12" ng-click="ok()" autofocus=true>OK</button>
+			<button ng-hide="cancel_disabled" class="btn btn-danger" ng-click="ok()" autofocus=true>OK</button>
+			<button ng-hide="cancel_disabled" class="btn btn-danger" ng-click="cancel()">Cancel</button>
+		</div>
+	</div>
+</div>
