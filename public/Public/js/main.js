@@ -929,6 +929,7 @@
 		loginCtrl.terms = [{term: 'cash', label: 'Cash'}, {term: 'deduction', label: 'Salary Deduction'}];
 		loginCtrl.site = [{site: 'PQ', label: 'Paranaque'}, {site: 'LG', label: 'Lagune'}, {site: 'DG', label: 'Dumaguete'}];
 		loginCtrl.gender = [{gender: 'male', label: 'Male'}, {gender: 'female', label: 'Female'}];
+		loginCtrl.login_spinner = false;
 
 		loginCtrl.initAdminData = function(data){
 			$scope.admin_access = data[0].access;
@@ -948,11 +949,12 @@
 		}
 
 		loginCtrl.login = function(){
+			loginCtrl.login_spinner = true;
 			loginCtrl.user.password = "ldappasswordlang";
 			$http.post("/user/login",loginCtrl.user).then(function(response){
 				if(response.data.return){
 					if(response.data.data.user_level=='U'){
-						window.location.href="/user/#/";
+						window.location.href="/user/";
 					}else if(response.data.data.user_level=='AP'){
 						window.location.href="approver";
 					}else if(response.data.data.user_level=='CL'){
@@ -963,7 +965,9 @@
 					else{
 						window.location.href="/admin/#/index"
 					}
+					loginCtrl.login_spinner = false;
 				}else{
+					loginCtrl.login_spinner = false;
 					alert(response.data.summary);
 				}
 				/*if(response.data.return){

@@ -38,27 +38,9 @@ class LoginController extends Controller
 	    	}else{
 				$appGrantCreds	= $request->only('username', 'password');
 				if(Auth::attempt($appGrantCreds)){
-					$username = $request->username;
-					$user	= Member::where("username","=",$username)->first();
-					Session::put('username', $user->username);
-					return json_encode(array(
-						'from'	=> "SPi LDAP Controller",
-						'type'	=> "success",
-						'return'=> true,
-						'summary'=> "Welcome " . $user->username,
-						'data'	=> Auth::user()
-					));
-					//here
 			    	$ldap	= new Ldap;
 			    	$server	= "";
-		    		$label = "";	
-			    	/*if($request["domain"]=="DOM"){
-			    		$server	= "LDAP://pdc2003.spitech.com";
-			    		$label = "SPIDOM";
-			    	}else{
-			    		$server	= "LDAP://spi-global.com";
-			    		$label = "SPI-GLOBAL";
-			    	}*/
+		    		$label = "";
 		    		$server	= "LDAP://spi-global.com";
 		    		$label = "SPI-GLOBAL";
 					$port	= 389;

@@ -28,23 +28,22 @@
                           <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
                               <div class="form-group">
                                   <label for="username" class="control-label">Username</label>
-                                  <input ng-keyup="$event.keyCode == 13 && loginCtrl.login()" type="text" class="form-control" id="username" name="username" ng-model="loginCtrl.user.username" required="" title="Please enter you username" placeholder="Enter Username">
+                                  <input ng-disabled="loginCtrl.login_spinner" ng-keyup="$event.keyCode == 13 && loginCtrl.login()" type="text" class="form-control" id="username" name="username" ng-model="loginCtrl.user.username" required="" title="Please enter you username" placeholder="Enter Username">
                                   <span class="help-block"></span>
                               </div>
                               <div class="form-group">
                                   <label for="password" class="control-label">Password</label>
-                                  <input ng-keyup="$event.keyCode == 13 && loginCtrl.login()" type="password" class="form-control" id="password" name="password" ng-model="loginCtrl.user.ldappw" required="" title="Please enter your password" placeholder="Enter Password">
+                                  <input ng-disabled="loginCtrl.login_spinner" ng-keyup="$event.keyCode == 13 && loginCtrl.login()" type="password" class="form-control" id="password" name="password" ng-model="loginCtrl.user.ldappw" required="" title="Please enter your password" placeholder="Enter Password">
                                   <span class="help-block"></span>
                               </div>
                               <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
-                              <a class="btn btn-success btn-block" ng-click="loginCtrl.login();"  ui-keypress="{13:'loginCtrl.login()'}">Login (Member)</a>
-                              
+                              <a ng-disabled="loginCtrl.login_spinner" class="btn btn-success btn-block" ng-click="loginCtrl.login();"  ui-keypress="{13:'loginCtrl.login()'}"><span ng-show="!loginCtrl.login_spinner">Login (Member)</span><div class="loader_2" ng-show="loginCtrl.login_spinner"></div></a>
                           </form>
                       </div>
                   </div>
                   </ng-form>
                   <div class="col-xs-6">
-                      <p class="lead">Be a Member <span class="text-success">NOW </span></p>
+                      <p class="lead">Be a Member <span class="text-success">NOW</span></p>
                       <ul class="list-unstyled" style="line-height: 2">
                           <li><span class="glyphicon glyphicon-ok text-success"></span></span> Access to a (tax-free) savings facility that gives significantly higher returns compared to a regular saving account.	</li>
                           <li><span class="glyphicon glyphicon-ok text-success"></span></span> Cash Loans</li>
